@@ -6,3 +6,4 @@ scikit-learn
 qiskit
 qiskit-machine-learning
 pycryptodome
+python-multipart
