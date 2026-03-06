@@ -1,10 +1,17 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 
 app = FastAPI()
 
-# Simple fraud prediction placeholder
-# Later you can integrate your quantum model here
+# Allow frontend (Lovable) to call API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
@@ -13,8 +20,6 @@ def home():
 @app.post("/predict")
 def predict(data: list):
 
-    # Example logic
-    # Replace with your quantum model later
     value = np.mean(data)
 
     if value > 0.5:
